@@ -1,16 +1,14 @@
 package com.liuchang.backend.login.controller;
 
-import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api
 @RestController
-@RequestMapping
 public class LoginController {
+    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    public String getUser(){
 
-    @RequestMapping("/users")
-    public String authenticUser(String username){
-        return "login sueccess";
+        return "query user success";
     }
 }
