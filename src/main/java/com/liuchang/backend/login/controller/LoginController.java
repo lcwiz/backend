@@ -1,14 +1,29 @@
 package com.liuchang.backend.login.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.liuchang.backend.login.dto.User;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController(value = "/users")
 public class LoginController {
-    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    @GetMapping
+//    @ResponseBody
     public String getUser(){
 
-        return "query user success";
+        return "forward:/signin";
+    }
+
+    @GetMapping(value ="/users/{userid}")
+    @ResponseBody
+    public String getUserById(@PathVariable String userid)
+    {
+
+        return "receive search user id is " + userid;
+    }
+
+    @PostMapping(value = "/adduser")
+    @ResponseBody
+    public String insertUser(@RequestBody User user){
+        System.out.println("=============="+user.getUserId());
+        return "this userinfo insert successed";
     }
 }
