@@ -23,7 +23,7 @@ public enum ResultEnum {
      * @param rsltCode
      * @return
      */
-    public String getName(int rsltCode){
+    public String getRtnDesc(int rsltCode){
         for(ResultEnum rsltEnum:ResultEnum.values()){
             if(rsltEnum.getRtnCode()== rsltCode){
                 return rsltEnum.getRtnName();

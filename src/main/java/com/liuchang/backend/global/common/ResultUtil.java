@@ -2,7 +2,7 @@ package com.liuchang.backend.global.common;
 
 import java.util.List;
 
-public class ResultUtil {
+public class ResultUtil<T> {
 
     public Result successReturn(){
         Result<List> rslt = new Result<List>();
@@ -10,10 +10,17 @@ public class ResultUtil {
         return  rslt;
     }
 
-    public Result getSuccessResult(){
+    public Result getSuccessResult(T data){
         return new Result()
                 .setCode(String.valueOf(ResultEnum.SUCCESS.getRtnCode()))
-                .setMsg(ResultEnum.SUCCESS.getName(ResultEnum.SUCCESS.getRtnCode()))
+                .setMsg(ResultEnum.SUCCESS.getRtnDesc(ResultEnum.SUCCESS.getRtnCode()))
+                .setData(data);
+    }
+
+    public Result getFailResult(){
+        return new Result()
+                .setCode(String.valueOf(ResultEnum.FAIL.getRtnCode()))
+                .setMsg(ResultEnum.FAIL.getRtnDesc(ResultEnum.FAIL.getRtnCode()))
                 .setData(null);
     }
 }
